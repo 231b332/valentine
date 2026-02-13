@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Harshuuu ðŸ–¤</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    height:100vh;
+    background:linear-gradient(120deg,#ffd6e8,#fff1c1,#e0f7f4);
+    background-size:300% 300%;
+    animation:bg 14s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.card{
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(12px);
+    border-radius:28px;
+    padding:30px 24px;
+    width:90%;
+    max-width:360px;
+    text-align:center;
+    box-shadow:0 20px 35px rgba(0,0,0,0.18);
+    z-index:2;
+}
+
+.hidden{display:none;}
+
+h1{
+    font-family:'Pacifico',cursive;
+    font-size:24px;
+    color:#ff4f8b;
+}
+
+h2{
+    font-size:16px;
+    margin:14px 0 24px;
+    color:#555;
+}
+
+button{
+    padding:11px 26px;
+    border:none;
+    border-radius:30px;
+    font-size:15px;
+    margin:6px;
+    cursor:pointer;
+}
+
+.yes{
+    background:#ff4f8b;
+    color:white;
+    box-shadow:0 0 14px rgba(255,79,139,0.6);
+}
+
+.no{
+    background:#f2f2f2;
+    color:#666;
+}
+
+.love{
+    font-family:'Pacifico',cursive;
+    font-size:22px;
+    color:#ff4f8b;
+    line-height:1.5;
+}
+
+.fall{
+    position:absolute;
+    top:-40px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* Heart */
+.heart{
+    width:18px;
+    height:18px;
+    background:#ff4f8b;
+    transform:rotate(45deg);
+}
+.heart:before,
+.heart:after{
+    content:'';
+    width:18px;
+    height:18px;
+    background:#ff4f8b;
+    border-radius:50%;
+    position:absolute;
+}
+.heart:before{top:-9px;left:0;}
+.heart:after{left:-9px;top:0;}
+
+/* Rose */
+.rose{
+    width:14px;
+    height:14px;
+    background:#ff8fab;
+    border-radius:50%;
+    box-shadow:-6px 0 #ffb3c6,6px 0 #ffb3c6,0 -6px #ffc2d1;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_8b8a1c6c59.mp3">
+</audio>
+
+<!-- TAP SCREEN -->
+<div class="card" id="startBox">
+    <h1>Tap to Begin â¤ï¸</h1>
+    <p style="margin-top:10px;color:#555;">A little surprise for youâ€¦</p>
+    <button class="yes" onclick="startExperience()">Tap ðŸ’—</button>
+</div>
+
+<!-- QUESTION -->
+<div class="card hidden" id="qBox">
+    <h1>Will you be my Valentine?</h1>
+    <h2>My dear Harshuuu ðŸ–¤</h2>
+    <button class="yes" onclick="yesClick()">Yes ðŸ’—</button>
+    <button class="no" id="noBtn" onclick="noClick()">No ðŸ™ˆ</button>
+</div>
+
+<!-- FINAL -->
+<div class="card hidden" id="loveBox">
+    <div class="love">
+        Happy Valentineâ€™s Day ðŸ’•<br>
+        My Iklote Love<br>
+        Mele pyaleee<br>
+        Harshuuuu ðŸ–¤
+    </div>
+</div>
+
+<script>
+let texts=[
+"Please ðŸ¥º","Sweetuuuu ðŸ’—","Ek baar soch lo ðŸ˜Œ","Sirf tum hi ho ðŸ–¤",
+"Mele liye ðŸ‘‰ðŸ‘ˆ","Smile kar do na ðŸ˜Š","Bas ek yes ðŸ’ž"
+];
+let i=0;
+
+function startExperience(){
+ document.getElementById("startBox").classList.add("hidden");
+ document.getElementById("qBox").classList.remove("hidden");
+ document.getElementById("music").play(); // âœ… guaranteed play
+}
+
+function noClick(){
+ let b=document.getElementById("noBtn");
+ b.innerText=texts[i];
+ i=(i+1)%texts.length;
+}
+
+function yesClick(){
+ document.getElementById("qBox").classList.add("hidden");
+ document.getElementById("loveBox").classList.remove("hidden");
+ rain("heart",30,4);
+ rain("rose",22,5);
+}
+
+function rain(type,count,speed){
+ for(let i=0;i<count;i++){
+  let d=document.createElement("div");
+  d.className="fall "+type;
+  d.style.left=Math.random()*100+"vw";
+  d.style.animationDuration=(speed+Math.random()*3)+"s";
+  document.body.appendChild(d);
+ }
+}
+</script>
+
+</body>
+</html>
