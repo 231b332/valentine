@@ -188,6 +188,18 @@ function rain(type,count,speed){
   document.body.appendChild(d);
  }
 }
+    function yes(){
+  p2.classList.add("hide");
+  p3.classList.remove("hide");
+
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.style.left=Math.random()*100+"%";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),4000);
+  },300);
+    }
 </script>
 
 </body>
